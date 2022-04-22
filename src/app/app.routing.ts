@@ -4,12 +4,20 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { RegisterComponent } from './views/register/register.component';
 import {SuccessComponent} from './views/success/success.component';
+import {P403Component} from './views/error/403.component';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'register',
     pathMatch: 'full',
+  },
+  {
+    path: '403',
+    component: P403Component,
+    data: {
+      title: 'Page 403'
+    }
   },
   {
     path: '404',
