@@ -27,6 +27,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this._route.queryParams.subscribe( queryParams => {
       this.authToken = queryParams.token;
+      if (!this.authToken) {
+        return this._router.navigate(['403']);
+      }
     });
     }
 
