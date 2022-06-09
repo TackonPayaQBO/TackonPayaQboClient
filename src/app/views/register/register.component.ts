@@ -37,11 +37,17 @@ export class RegisterComponent implements OnInit {
     formValues.info = this.authToken;
     this._payaQboService.boardUser(formValues)
       .then(res => {
-        console.log(res);
         if (res) {
           this.document.location.href = AppConstants.PAYA_REDIRECT;
         }
-      }).catch(res => this.alert('danger', res.error.message));
+      }).catch(res => {
+        if (res.error.message) {
+          this.alert('danger', res.error.message);
+        } else {
+          this.alert('danger', res.error);
+        }
+      }
+    );
   }
 
   createBoardForm() {
